@@ -35,8 +35,8 @@ public class BaseSteps{
                 driver = new ChromeDriver();
         }
         baseUrl = properties.getProperty("url");
-        driver.manage().timeouts().implicitlyWait(60, java.util.concurrent.TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(60, java.util.concurrent.TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, java.util.concurrent.TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(40, java.util.concurrent.TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(baseUrl);
 

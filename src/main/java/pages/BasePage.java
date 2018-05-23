@@ -29,10 +29,25 @@ public class BasePage {
         Assert.fail("Не найден элемент коллеции - " + itemName);
     }
 
+    public boolean isElementPresent(By element) {
+        try {
+            BaseSteps.getDriver().manage().timeouts().implicitlyWait(6, java.util.concurrent.TimeUnit.SECONDS);
+            return BaseSteps.getDriver().findElement(element).isDisplayed();
+        } catch (java.util.NoSuchElementException e) {
+            return false;
+        }
+        finally {
+            BaseSteps.getDriver().manage().timeouts().implicitlyWait(30, java.util.concurrent.TimeUnit.SECONDS);
+        }
+    }
+
     public void fillField(WebElement element, String value)  {
         element.clear();
         element.sendKeys(value);
         element.sendKeys(Keys.ENTER);
+
     }
+
+
 
 }

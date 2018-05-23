@@ -9,13 +9,9 @@ public class CartSteps {
         new CartPage().checkBuys();
     }
 
-    @Step("Удалили все фотоаппараты из корзины")
-    public void removeAllPhoto(){
-        new CartPage().removeAllPhoto();
-    }
-    @Step("Удалили все телефоны из корзины")
-    public void removeAllPhones(){
-        new CartPage().removeAllPhones();
+    @Step("Удалили все из корзины")
+    public void removeAll(){
+        new CartPage().removeAll();
     }
 
     @Step("Проверили что корзина пуста")

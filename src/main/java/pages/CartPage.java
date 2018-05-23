@@ -12,11 +12,11 @@ public class CartPage  extends BasePage{
     @FindBy(xpath = "//div[@class='eCartControls_infoDate']")
     List<WebElement> info;
 
+    @FindBy(xpath = "//*[text()='Удалить всё']/..")
+    WebElement clearAllButton;
 
     @FindBy(xpath = "//*[@id=\"PageCenter\"]/div[2]/div[3]/div[1]/div[1]/div/div/span")
     WebElement cartTitle;
-
-
 
 
     public void checkBuys(){
@@ -30,24 +30,18 @@ public class CartPage  extends BasePage{
               Assert.fail("Элемент "+item.getText()+" не найден");
           }
       }
-
-
     }
-    public void removeAllPhoto() {
-        for(int i=0;i<2;i++) {
+
+    public void removeAll(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(info));
+        while (isElementPresent(By.xpath("//*[text()='Удалить всё']"))){
+            Wait<WebDriver> wait = new WebDriverWait(BaseSteps.getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(clearAllButton)).click();
+            BaseSteps.getDriver().navigate().refresh();
             wait.until(ExpectedConditions.visibilityOfAllElements(info));
-            List<WebElement> elements = BaseSteps.getDriver().findElements(By.xpath("//div[@class='eCartControls_buttons']/div"));
-            wait.until(ExpectedConditions.visibilityOfAllElements(elements));
-            elements.get(0).click();
-            try {
-                Thread.sleep(5000);
-            }
-            catch (InterruptedException e){}
         }
     }
-    public void removeAllPhones() {
-       BaseSteps.getDriver().findElement(By.xpath("//div[@class='eCartControls_buttons']/div")).click();
-        }
+
 
 
     public void checkCart() {

@@ -41,13 +41,9 @@ public class ScenarioSteps {
     public void checkBuys(){
        cartSteps.сheckBuys();
     }
-    @Then("Удалили все фотоаппараты из корзины")
-    public void removeAllPhoto(){
-        cartSteps.removeAllPhoto();
-    }
-    @Then("Удалили все телефоны из корзины")
-    public void removeAllPhones(){
-        cartSteps.removeAllPhones();
+    @Then("Удалили все из корзины")
+    public void removeAll(){
+        cartSteps.removeAll();
     }
     @Then("Проверили что корзина пуста")
     public void checkCart(){

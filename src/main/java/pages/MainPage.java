@@ -24,10 +24,13 @@ public class MainPage extends BasePage {
 
     public void getCategorie(String name){
         try{
+            BaseSteps.getDriver().manage().timeouts().implicitlyWait(5, java.util.concurrent.TimeUnit.SECONDS);
             popUpBtn.click();
+
         }
         catch (Exception e){}
         finally {
+            BaseSteps.getDriver().manage().timeouts().implicitlyWait(30, java.util.concurrent.TimeUnit.SECONDS);
             selectCollectionItem(name, categories);
         }
     }
